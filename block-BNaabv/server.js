@@ -12,6 +12,7 @@ app.use( ( req, res, next )=>{
     res.cookie( "count", 1 );
     next();
 } );
+
 //router to capture params from the request on a route `/users/:username`
 
 app.get( '/user/:username', ( req, res )=>{
