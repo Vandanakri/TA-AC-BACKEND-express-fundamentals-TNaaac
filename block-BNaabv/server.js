@@ -1,23 +1,26 @@
+//require
 var express = require('express');
 var logger = require('morgan');
-var cookieParser = require(cookieParser);
+var cookieParser = require('cookie-parser');
 
 var app = express();
 
+//middleware
+app.use( express.json() );
+app.use( express.urlencoded( { extended : false  } ) );
+
+
 app.use(logger('dev'))
-app.use( cookieParser() );
+app.use(cookieParser());
 
 app.use( ( req, res, next )=>{
-    res.cookie( "count", 1 );
+    res.cookie( "username", "Vana" );
     next();
-} );
+});
 
-//router to capture params from the request on a route `/users/:username`
 
-app.get( '/user/:username', ( req, res )=>{
-    var username = req.params.username;
-    res.send(`<h1>${username}</h1>`);
-} )
+
+//routes
 
 //Create a basic express server with 2 routes
 
@@ -32,30 +35,38 @@ app.get('/about', (req,res) => {
 
 // add POST request on `/form` route to capture form data
 
-app.use( express.urlencoded( { extended : false  } ) );
 
 app.post( '/form', ( req, res )=>{
-    res.send( req.body );
+    res.json( req.body );
 } );
 
 //add POST request on `/json` route to capture JSON data
 
-app.use( express.json() );
 
 app.post( '/json', ( req, res )=>{
-    res.send( req.body );
+    res.json( req.body );
 } );
+
+//router to capture params from the request on a route `/users/:username`
+
+app.get( '/user/:username', ( req, res )=>{
+  var username = req.params.username;
+  res.send(`<h1>${username}</h1>`);
+} )
+
+//404 middlewares
 
 app.use( ( req, res, next ) => {
-    res.status(404).send("<h1>Page not found on the server</h1>");
-} );
+    res.send("Page not found on the server");
+});
 
-app.use( ( req, res, next ) => {
-    res.status(500).send("<h1>Client and Server error</h1>");
-} );
+//custom middlewares
+app.use( (err,req,res,next ) => {
+    res.send("Client and Server error");
+});
 
 
-app.listen(5000,() => {
-  console.log('server is listening on port 5k')
+app.listen(3000,() => {
+  console.log('server is listening on port 3k')
 })
 
