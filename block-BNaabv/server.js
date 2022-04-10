@@ -5,7 +5,6 @@ var cookieParser = require(cookieParser);
 var app = express();
 
 app.use(logger('dev'))
-
 app.use( cookieParser() );
 
 app.use( ( req, res, next )=>{
