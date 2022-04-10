@@ -1,0 +1,17 @@
+{
+  "name": "Assignment",
+  "version": "1.0.0",
+  "description": "This is a Assignment",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
+  }
+}
