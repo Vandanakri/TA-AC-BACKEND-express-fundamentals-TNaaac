@@ -1,14 +1,17 @@
 {
-  "name": "altcampus-assignment",
-  "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "name": "Assignment",
+  "version": "4.16.4",
+  "description": "This is a Assignment",
   "scripts": {
-    "test": "jest --passWithNoTests"
+    "start": "node server.js"
   },
-  "author": "AltCampus",
-  "license": "GNU GPL V3",
+  "main": "server.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "jest": "^26.0.1"
+    "cookie-parser": "^1.4.6",
+    "express": "^4.17.3",
+    "morgan": "^1.10.0"
   }
 }
