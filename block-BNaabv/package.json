@@ -1,6 +1,6 @@
 {
   "name": "Assignment",
-  "version": "4.16.4",
+  "version": "1.0.0",
   "description": "This is a Assignment",
   "scripts": {
     "start": "node server.js"
