@@ -24,6 +24,7 @@ app.get('/users', (req,res) => {
 
 app.use(express.static(__dirname + '/assets'))
 
+//err handle
 app.use((err,req,res,next) => {
   res.send(err);
 })
