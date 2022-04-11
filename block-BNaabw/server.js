@@ -7,7 +7,9 @@ var app = express();
 
 //middleware
 app.use( express.json() );
-app.use( express.urlencoded( { extended : false  } ) );
+app.use( express.urlencoded( { extended : false  }));
+
+app.use(express.static(__dirname + '/public'))
 
 app.use(logger('dev'))
 app.use(cookieParser());
@@ -15,16 +17,23 @@ app.use(cookieParser());
 //routes
 
 app.get('/', (req,res) => {
-  res.send('Welcome to Express')
+  res.sendFile(__dirname + '/index.html')
+})
+
+app.get('/projects', (req,res) => {
+  res.sendFile(__dirname + '/projects.html')
 })
 
 app.get('/users', (req,res) => {
   res.send('This is Assignment 2')
 })
 
-app.use(express.static(__dirname + '/assets'))
 
 //err handle
+
+app.use((req,res,next) => {
+  res.send('Page not found')
+})
 app.use((err,req,res,next) => {
   res.send(err);
 })
